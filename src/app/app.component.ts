@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'mealdex';
+
+  ngOnChanges() {
+    console.log("AppComponent changed");
+  }
+
+  ngOnInit() {
+    console.log("AppComponent initialized");
+  }
+  
 }
