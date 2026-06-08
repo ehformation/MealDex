@@ -1,4 +1,13 @@
 <h1>Liste des repas</h1>
-<p>{{  meals[0].strMeal }}</p>
-<p>{{  meals[1].strMeal }}</p>
-<p>{{  meals[2].strMeal }}</p>
+
+<div *ngIf="meals.length > 0">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let meal of meals">
+      <div class="card h-100">
+        <img [src]="meal.strMealThumb" class="card-img-top" alt="{{ meal.strMeal }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ meal.strMeal }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
