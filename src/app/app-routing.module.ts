@@ -5,7 +5,10 @@ import { MealDetailComponent } from './meals/meal-detail/meal-detail.component';
 
 const routes: Routes = [
   { path: '', component: MealListComponent }, 
-  { path: 'meal/:id', component: MealDetailComponent }, 
+  { path: 'meals', component: MealListComponent },
+  { path: 'meal/:id', component: MealDetailComponent },
+  
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({
