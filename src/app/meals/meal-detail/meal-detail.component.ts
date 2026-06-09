@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Meal } from 'src/app/core/models/meal.model';
 
 @Component({
@@ -26,5 +27,17 @@ export class MealDetailComponent {
         strMealThumb: 'https://www.themealdb.com/images/media/meals/svprys1511176755.jpg',
         strInstructions: '1. Cook egg noodles according to package instructions. 2. In a pan, cook beef strips until browned. 3. Remove beef and set aside. 4. In the same pan, sauté onions and mushrooms until soft. 5. Stir in sour cream and beef broth until sauce is smooth. 6. Add beef back to the pan and simmer for a few minutes. 7. Serve over cooked egg noodles.'
       }
-    ];
+  ];
+  meal: Meal | undefined;
+
+  constructor(private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    const mealId: string | null = this.route.snapshot.paramMap.get('id'); 
+    console.log('Meal ID from route:', mealId);
+
+    if (mealId) {
+      this.meal = this.meals.find(m => m.idMeal === mealId);
+    }
+  }
 }

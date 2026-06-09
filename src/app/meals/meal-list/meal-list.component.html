@@ -3,7 +3,7 @@
 <div *ngIf="meals.length > 0">
   <div class="row">
     <div class="col-md-4 mb-4" *ngFor="let meal of meals">
-      <div class="card h-100" appHighlightCard>
+      <div routerLink="/meal/{{ meal.idMeal }}" class="card h-100" appHighlightCard>
         <img [src]="meal.strMealThumb" class="card-img-top" alt="{{ meal.strMeal }}">
         <div class="card-body">
             <span class="badge bg-secondary">{{ 8 |difficulte }}</span> 
