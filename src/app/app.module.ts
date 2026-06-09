@@ -9,6 +9,7 @@ import { DifficultePipe } from './core/pipes/difficulte.pipe';
 import { TronquerPipe } from './core/pipes/tronquer.pipe';
 import { CopierDirective } from './core/directives/copier.directive';
 import { MealDetailComponent } from './meals/meal-detail/meal-detail.component';
+import { Error404Component } from './error404/error404.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MealDetailComponent } from './meals/meal-detail/meal-detail.component';
     DifficultePipe,
     TronquerPipe,
     CopierDirective,
-    MealDetailComponent
+    MealDetailComponent,
+    Error404Component
   ],
   imports: [
     BrowserModule,
