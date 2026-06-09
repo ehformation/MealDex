@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Meal } from '../../core/models/meal.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-meal-list',
@@ -27,4 +28,10 @@ export class MealListComponent {
       strInstructions: '1. Cook egg noodles according to package instructions. 2. In a pan, cook beef strips until browned. 3. Remove beef and set aside. 4. In the same pan, sauté onions and mushrooms until soft. 5. Stir in sour cream and beef broth until sauce is smooth. 6. Add beef back to the pan and simmer for a few minutes. 7. Serve over cooked egg noodles.'
     }
   ];
+
+  constructor(private router: Router) { }
+
+  goToMealDetail(mealId: string) {
+    this.router.navigate(['/meal', mealId]);
+  }
 }
