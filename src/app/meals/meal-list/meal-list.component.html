@@ -8,7 +8,7 @@
         <div class="card-body">
             <span class="badge bg-secondary">{{ 8 |difficulte }}</span> 
           <h5 class="card-title">{{ meal.strMeal | uppercase }}</h5>
-          <button class="btn btn-primary" appCopier [appCopier]="meal.strMeal">📑</button>
+          <button class="btn btn-primary" [appCopier]="meal.strMeal">📑</button>
           <p class="card-text">{{ meal.strInstructions | tronquer:30 }}</p>
         </div>
       </div>
