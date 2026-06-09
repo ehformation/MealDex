@@ -7,6 +7,7 @@ import { MealListComponent } from './meals/meal-list/meal-list.component';
 import { HighlightCardDirective } from './meals/directives/highlight-card.directive';
 import { DifficultePipe } from './core/pipes/difficulte.pipe';
 import { TronquerPipe } from './core/pipes/tronquer.pipe';
+import { CopierDirective } from './core/directives/copier.directive';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { TronquerPipe } from './core/pipes/tronquer.pipe';
     MealListComponent,
     HighlightCardDirective,
     DifficultePipe,
-    TronquerPipe
+    TronquerPipe,
+    CopierDirective
   ],
   imports: [
     BrowserModule,
