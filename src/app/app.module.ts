@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { MealListComponent } from './meals/meal-list/meal-list.component';
 import { HighlightCardDirective } from './meals/directives/highlight-card.directive';
 import { DifficultePipe } from './core/pipes/difficulte.pipe';
+import { TronquerPipe } from './core/pipes/tronquer.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     MealListComponent,
     HighlightCardDirective,
-    DifficultePipe
+    DifficultePipe,
+    TronquerPipe
   ],
   imports: [
     BrowserModule,

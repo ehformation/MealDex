@@ -8,6 +8,7 @@
         <div class="card-body">
             <span class="badge bg-secondary">{{ 8 |difficulte }}</span> 
           <h5 class="card-title">{{ meal.strMeal | uppercase }}</h5>
+          <p class="card-text">{{ meal.strInstructions | tronquer:30 }}</p>
         </div>
       </div>
     </div>
