@@ -3,4 +3,7 @@ export interface Meal {
   strMeal: string;
   strMealThumb: string;
   strInstructions: string;
+  strDifficulty?: string;
+  StrCategory?: string;
+
 }

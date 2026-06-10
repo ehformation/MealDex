@@ -37,9 +37,15 @@ export class MealsService {
     return this.meals.find(meal => meal.idMeal === id);
   } 
 
-  getDifficulty(meal: Meal): string[] {
+  getDifficulty(): string[] {
     return [
       '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'
+    ];
+  }
+
+  getCategories(): string[] {
+    return [
+      'Entrée', 'Plat', 'Dessert', 'Apéritif', 'Boisson', 'Accompagnement', 'Sauce', 'Autre'
     ];
   }
 }

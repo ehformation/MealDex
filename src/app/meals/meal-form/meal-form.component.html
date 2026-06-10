@@ -1,0 +1,34 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h2 class="mb-3">{{ isEditMode ? 'Modifier la recette' : 'Ajouter une recette' }}</h2>
+  <div  class="mb-3">
+    <label for="strMeal">Name:</label>
+    <input id="strMeal" formControlName="strMeal" />
+  </div>
+  <div class="mb-3">
+    <label for="strMealThumb">Image URL:</label>
+    <input id="strMealThumb" formControlName="strMealThumb" />
+  </div>
+  <div class="mb-3">
+    <label for="strInstructions">Instructions:</label>
+    <textarea id="strInstructions" formControlName="strInstructions"></textarea>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Difficulté</label>
+    <select class="form-select" formControlName="strDifficulty">
+      <option value="">— choisir —</option>
+      <option *ngFor="let d of difficulties">{{ d }}</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Catégorie</label>
+    <select class="form-select" formControlName="StrCategory">
+      <option value="">— choisir —</option>
+      <option *ngFor="let c of categories">{{ c }}</option>
+    </select>
+  </div>
+
+  <button class="btn btn-success" type="submit" [disabled]="form.invalid">
+    {{ isEditMode ? 'Mettre à jour' : 'Enregistrer' }}
+  </button>
+  <button class="btn btn-link" type="button" (click)="canceled.emit()">Annuler</button>
+</form>

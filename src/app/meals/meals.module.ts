@@ -7,7 +7,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HighlightCardDirective } from './directives/highlight-card.directive';
 import { TronquerPipe } from '../core/pipes/tronquer.pipe';
 import { CopierDirective } from '../core/directives/copier.directive';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MealFormComponent } from './meal-form/meal-form.component';
 
 const mealsRoutes: Routes = [ 
   { path: 'meals', component: MealListComponent },
@@ -22,11 +23,13 @@ const mealsRoutes: Routes = [
     HighlightCardDirective,
     TronquerPipe,
     CopierDirective,
+    MealFormComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(mealsRoutes),
     FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class MealsModule { }
