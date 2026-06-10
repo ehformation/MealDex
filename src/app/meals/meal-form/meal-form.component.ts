@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Meal } from 'src/app/core/models/meal.model';
 import { MealsService } from '../meals.service';
-import { minMotsValidator } from '../meal.validators';
+import { minMotsValidator, tempsValidator } from '../meal.validators';
 
 @Component({
   selector: 'app-meal-form',
@@ -22,7 +22,8 @@ export class MealFormComponent {
     strMealThumb: ['', Validators.required],
     strInstructions: ['', [Validators.required, minMotsValidator(20)]],
     strDifficulty: [''],
-    StrCategory: ['']
+    StrCategory: [''],
+    tempsPreparation: [0, [Validators.required, tempsValidator()]]
   });
 
   constructor(private fb: FormBuilder, private mealService: MealsService) {}
@@ -57,7 +58,8 @@ export class MealFormComponent {
       strMealThumb: v.strMealThumb!,
       strInstructions: v.strInstructions!,
       strDifficulty: v.strDifficulty || '',
-      StrCategory: v.StrCategory || ''
+      StrCategory: v.StrCategory || '',
+      tempsPreparation: v.tempsPreparation || 0
     };
     this.saved.emit(mealToSave);
   }

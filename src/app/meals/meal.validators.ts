@@ -10,3 +10,15 @@ export function minMotsValidator(minMots: number): ValidatorFn {
   };
 }
 
+export function tempsValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const valeur = control.value;
+    if (valeur === null || valeur === '' || valeur === undefined) {
+      return null; // on laisse "required" gérer le vide
+    }
+    const temps = Number(valeur);
+    return temps >= 5 && temps <= 240
+      ? null
+      : { tempsInvalide: true };
+  };
+}

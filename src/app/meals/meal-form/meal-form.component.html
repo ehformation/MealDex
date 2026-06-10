@@ -21,6 +21,14 @@
     </div>
   </div>
   <div class="mb-3">
+    <label class="form-label" for="tempsPreparation">Temps de préparation (minutes):</label>
+    <input class="form-control" id="tempsPreparation" formControlName="tempsPreparation" type="number" />
+    <div class="text-danger small" *ngIf="form.get('tempsPreparation')?.touched && form.get('tempsPreparation')?.invalid">
+      <span *ngIf="form.get('tempsPreparation')?.errors?.['required']">Le temps de préparation est requis.</span>
+      <span *ngIf="form.get('tempsPreparation')?.errors?.['tempsInvalide']">Le temps de préparation doit être compris entre 5 et 240 minutes.</span>
+    </div>
+  </div>
+  <div class="mb-3">
     <label class="form-label">Difficulté</label>
     <select class="form-select" formControlName="strDifficulty">
       <option value="">— choisir —</option>

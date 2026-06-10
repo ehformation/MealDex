@@ -5,5 +5,5 @@ export interface Meal {
   strInstructions: string;
   strDifficulty?: string;
   StrCategory?: string;
-
+  tempsPreparation?: number;
 }
