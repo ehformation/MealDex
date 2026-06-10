@@ -11,6 +11,8 @@ import { Meal } from 'src/app/core/models/meal.model';
 export class MealListComponent {
 
   meals: Meal[] = [];
+  nomRecherche = '';
+
   constructor(private router: Router, private mealsService: MealsService) { }
 
   ngOnInit() {

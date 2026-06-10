@@ -36,4 +36,10 @@ export class MealsService {
   getMealById(id: string): Meal | undefined {
     return this.meals.find(meal => meal.idMeal === id);
   } 
+
+  getDifficulty(meal: Meal): string[] {
+    return [
+      '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'
+    ];
+  }
 }

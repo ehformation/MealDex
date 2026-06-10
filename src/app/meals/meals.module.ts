@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HighlightCardDirective } from './directives/highlight-card.directive';
 import { TronquerPipe } from '../core/pipes/tronquer.pipe';
 import { CopierDirective } from '../core/directives/copier.directive';
+import { FormsModule } from '@angular/forms';
 
 const mealsRoutes: Routes = [ 
   { path: 'meals', component: MealListComponent },
@@ -25,6 +26,7 @@ const mealsRoutes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(mealsRoutes),
+    FormsModule,
   ]
 })
 export class MealsModule { }
