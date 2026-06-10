@@ -15,8 +15,6 @@ export class MealDetailComponent {
 
   ngOnInit() {
     const mealId: string | null = this.route.snapshot.paramMap.get('id'); 
-    console.log('Meal ID from route:', mealId);
-
     if (mealId) {
       this.meal = this.mealsService.getMealById(mealId);
     }
