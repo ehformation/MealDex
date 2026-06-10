@@ -1,8 +1,12 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <h2 class="mb-3">{{ isEditMode ? 'Modifier la recette' : 'Ajouter une recette' }}</h2>
   <div  class="mb-3">
-    <label class="form-label" for="strMeal">Name:</label>
+    <label class="form-label" for="strMeal">Nom de la recette:</label>
     <input class="form-control" id="strMeal" formControlName="strMeal" />
+    <div class="text-danger small" *ngIf="form.get('strMeal')?.touched && form.get('strMeal')?.invalid">
+      <span *ngIf="form.get('strMeal')?.errors?.['required']">Le nom de la recette est requis.</span>
+      <span *ngIf="form.get('strMeal')?.errors?.['minlength']">Le nom doit comporter au moins 3 caractères.</span>
+    </div>
   </div>
   <div class="mb-3">
     <label class="form-label" for="strMealThumb">Image URL:</label>
@@ -11,6 +15,10 @@
   <div class="mb-3">
     <label class="form-label" for="strInstructions">Instructions:</label>
     <textarea class="form-control" id="strInstructions" formControlName="strInstructions"></textarea>
+    <div class="text-danger small" *ngIf="form.get('strInstructions')?.touched && form.get('strInstructions')?.invalid">
+      <span *ngIf="form.get('strInstructions')?.errors?.['required']">Les instructions sont requises.</span>
+      <span *ngIf="form.get('strInstructions')?.errors?.['minMots'] as e">Préparation trop courte : {{ e.actuel }} mot(s), il en faut au moins {{ e.requis }}.</span>  
+    </div>
   </div>
   <div class="mb-3">
     <label class="form-label">Difficulté</label>

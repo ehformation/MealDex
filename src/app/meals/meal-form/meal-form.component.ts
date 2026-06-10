@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Meal } from 'src/app/core/models/meal.model';
 import { MealsService } from '../meals.service';
+import { minMotsValidator } from '../meal.validators';
 
 @Component({
   selector: 'app-meal-form',
@@ -17,9 +18,9 @@ export class MealFormComponent {
   categories: string[] = [];
 
   form = this.fb.group({
-    strMeal: ['', Validators.required],
+    strMeal: ['', [Validators.required, Validators.minLength(3)]],
     strMealThumb: ['', Validators.required],
-    strInstructions: ['', Validators.required],
+    strInstructions: ['', [Validators.required, minMotsValidator(20)]],
     strDifficulty: [''],
     StrCategory: ['']
   });
@@ -45,6 +46,7 @@ export class MealFormComponent {
 
   onSubmit() : void {
     if (this.form.invalid) {
+      this.form.markAllAsTouched();
       return;
     }
 
