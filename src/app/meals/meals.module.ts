@@ -9,9 +9,11 @@ import { TronquerPipe } from '../core/pipes/tronquer.pipe';
 import { CopierDirective } from '../core/directives/copier.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MealFormComponent } from './meal-form/meal-form.component';
+import { MealEditComponent } from './meal-edit/meal-edit.component';
 
 const mealsRoutes: Routes = [ 
   { path: 'meals', component: MealListComponent },
+  { path: 'meal/:id/edit', component: MealEditComponent },
   { path: 'meal/:id', component: MealDetailComponent },
 ];
 
@@ -24,6 +26,7 @@ const mealsRoutes: Routes = [
     TronquerPipe,
     CopierDirective,
     MealFormComponent,
+    MealEditComponent,
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,2 @@
+<a routerLink="/" class="btn btn-link mb-3">← Retour</a>
+<app-meal-form *ngIf="meal" [meal]="meal" (saved)="onMealSaved($event)" (canceled)="onMealCanceled()"></app-meal-form>

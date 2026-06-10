@@ -3,6 +3,9 @@
   <div class="col-md-5">
     <img [src]="m.strMealThumb" class="img-fluid rounded shadow-sm" [alt]="m.strMeal" />
   </div>
+  <a [routerLink]="['/meal', m.idMeal, 'edit']" class="btn btn-outline-primary btn-sm mb-3">
+    ✏️ Modifier
+  </a>
   <div class="col-md-7">
     <h2>{{ m.strMeal }}</h2>
     <p style="white-space: pre-line;">{{ m.strInstructions }}</p>

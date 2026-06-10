@@ -1,16 +1,16 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <h2 class="mb-3">{{ isEditMode ? 'Modifier la recette' : 'Ajouter une recette' }}</h2>
   <div  class="mb-3">
-    <label for="strMeal">Name:</label>
-    <input id="strMeal" formControlName="strMeal" />
+    <label class="form-label" for="strMeal">Name:</label>
+    <input class="form-control" id="strMeal" formControlName="strMeal" />
   </div>
   <div class="mb-3">
-    <label for="strMealThumb">Image URL:</label>
-    <input id="strMealThumb" formControlName="strMealThumb" />
+    <label class="form-label" for="strMealThumb">Image URL:</label>
+    <input class="form-control" id="strMealThumb" formControlName="strMealThumb" />
   </div>
   <div class="mb-3">
-    <label for="strInstructions">Instructions:</label>
-    <textarea id="strInstructions" formControlName="strInstructions"></textarea>
+    <label class="form-label" for="strInstructions">Instructions:</label>
+    <textarea class="form-control" id="strInstructions" formControlName="strInstructions"></textarea>
   </div>
   <div class="mb-3">
     <label class="form-label">Difficulté</label>

@@ -48,4 +48,8 @@ export class MealsService {
       'Entrée', 'Plat', 'Dessert', 'Apéritif', 'Boisson', 'Accompagnement', 'Sauce', 'Autre'
     ];
   }
+
+  editMeal(updatedMeal: Meal): void {
+    this.meals = this.meals.map(meal => meal.idMeal === updatedMeal.idMeal ? updatedMeal : meal);
+  }
 }
