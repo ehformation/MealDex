@@ -10,10 +10,12 @@ import { CopierDirective } from '../core/directives/copier.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MealFormComponent } from './meal-form/meal-form.component';
 import { MealEditComponent } from './meal-edit/meal-edit.component';
+import { MealAddComponent } from './meal-add/meal-add.component';
 
 const mealsRoutes: Routes = [ 
   { path: 'meals', component: MealListComponent },
   { path: 'meal/:id/edit', component: MealEditComponent },
+  { path: 'meal/add', component: MealAddComponent },
   { path: 'meal/:id', component: MealDetailComponent },
 ];
 
@@ -27,6 +29,7 @@ const mealsRoutes: Routes = [
     CopierDirective,
     MealFormComponent,
     MealEditComponent,
+    MealAddComponent,
   ],
   imports: [
     CommonModule,

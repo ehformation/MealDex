@@ -52,4 +52,8 @@ export class MealsService {
   editMeal(updatedMeal: Meal): void {
     this.meals = this.meals.map(meal => meal.idMeal === updatedMeal.idMeal ? updatedMeal : meal);
   }
+
+  addMeal(newMeal: Meal): void {
+    this.meals.push(newMeal);
+  }
 }
