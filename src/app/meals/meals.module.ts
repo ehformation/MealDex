@@ -11,12 +11,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MealFormComponent } from './meal-form/meal-form.component';
 import { MealEditComponent } from './meal-edit/meal-edit.component';
 import { MealAddComponent } from './meal-add/meal-add.component';
+import { authGuard } from '../core/guards/auth.guard';
 
 const mealsRoutes: Routes = [ 
-  { path: 'meals', component: MealListComponent },
-  { path: 'meal/:id/edit', component: MealEditComponent },
-  { path: 'meal/add', component: MealAddComponent },
-  { path: 'meal/:id', component: MealDetailComponent },
+  { path: 'meals', component: MealListComponent, canActivate: [authGuard] },
+  { path: 'meal/:id/edit', component: MealEditComponent, canActivate: [authGuard] },
+  { path: 'meal/add', component: MealAddComponent, canActivate: [authGuard] },
+  { path: 'meal/:id', component: MealDetailComponent, canActivate: [authGuard] },
 ];
 
 @NgModule({
