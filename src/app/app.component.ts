@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from './core/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'mealdex';
 
+  constructor(public auth: AuthService, private router: Router) {}
+
   ngOnChanges() {
     console.log("AppComponent changed");
   }
@@ -15,5 +19,11 @@ export class AppComponent {
   ngOnInit() {
     console.log("AppComponent initialized");
   }
+
+  logout(): void {
+    this.auth.logout(); 
+    this.router.navigate(['/login']);   
+  }
+
   
 }

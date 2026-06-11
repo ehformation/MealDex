@@ -7,6 +7,10 @@
        routerLinkActive="active"
        [routerLinkActiveOptions]="{ exact: true }">Accueil</a>
   </div>
+
+  <button class="btn btn-outline-light btn-sm"
+          *ngIf="auth.isLoggedIn()"
+          (click)="logout()">Se déconnecter</button>
 </nav>
 
 <div class="container py-4">

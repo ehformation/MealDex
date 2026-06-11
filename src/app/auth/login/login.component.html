@@ -1,1 +1,30 @@
-<p>login works!</p>
+<div class="container" style="max-width: 400px; margin-top: 60px;">
+    <h2 class="mb-4">Connexion</h2>
+
+    <div *ngIf="errors" class="alert alert-danger">
+        Identifiant ou mot de passe incorrect.
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="username" class="form-label">Identifiant</label>
+            <input type="text" id="username" formControlName="username" class="form-control" required>
+            <div *ngIf="form.get('username')?.invalid && form.get('username')?.touched" class="text-danger">
+                L'identifiant est requis.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Mot de passe</label>
+            <input type="password" id="password" formControlName="password" class="form-control" required>
+            <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="text-danger">
+                Le mot de passe est requis.
+            </div>  
+        </div>
+
+        <button class="btn btn-primary w-100" type="submit" [disabled]="loading">
+            {{ loading ? 'Connexion…' : 'Se connecter' }}
+        </button>
+    </form>
+
+</div>
