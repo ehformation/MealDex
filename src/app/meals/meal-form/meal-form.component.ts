@@ -18,12 +18,12 @@ export class MealFormComponent {
   categories: string[] = [];
 
   form = this.fb.group({
-    strMeal: ['', [Validators.required, Validators.minLength(3)]],
-    strMealThumb: ['', Validators.required],
-    strInstructions: ['', [Validators.required, minMotsValidator(20)]],
-    strDifficulty: [''],
-    StrCategory: [''],
-    tempsPreparation: [0, [Validators.required, tempsValidator()]]
+    title: ['', [Validators.required, Validators.minLength(3)]],
+    thumbnail: ['', Validators.required],
+    instructions: ['', [Validators.required, minMotsValidator(20)]],
+    difficulty: [''],
+    category: [''],
+    preparationTime: [0, [Validators.required, tempsValidator()]]
   });
 
   constructor(private fb: FormBuilder, private mealService: MealsService) {}
@@ -53,13 +53,13 @@ export class MealFormComponent {
 
     const v = this.form.value;
     const mealToSave: Meal = {
-      idMeal: this.meal?.idMeal ?? 'meal-' + Date.now(),
-      strMeal: v.strMeal!,
-      strMealThumb: v.strMealThumb!,
-      strInstructions: v.strInstructions!,
-      strDifficulty: v.strDifficulty || '',
-      StrCategory: v.StrCategory || '',
-      tempsPreparation: v.tempsPreparation || 0
+      id: this.meal?.id ?? 'meal-' + Date.now(),
+      title: v.title!,
+      thumbnail: v.thumbnail!,
+      instructions: v.instructions!,
+      difficulty: v.difficulty || '',
+      category: v.category || '',
+      preparationTime: v.preparationTime || 0
     };
     this.saved.emit(mealToSave);
   }

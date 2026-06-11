@@ -7,13 +7,13 @@
     <p>Vous avez tapé : <strong>{{ nomRecherche }}</strong></p>
 
     <div class="col-md-4 mb-4" *ngFor="let meal of meals">
-      <div (click)="goToMealDetail(meal.idMeal)" class="card h-100" appHighlightCard>
-        <img [src]="meal.strMealThumb" class="card-img-top" alt="{{ meal.strMeal }}">
+      <div (click)="goToMealDetail(meal.id)" class="card h-100" appHighlightCard>
+        <img [src]="meal.thumbnail" class="card-img-top" alt="{{ meal.title }}">
         <div class="card-body">
-            <span class="badge bg-secondary">{{ 8 |difficulte }}</span> 
-          <h5 class="card-title">{{ meal.strMeal | uppercase }}</h5>
-          <button class="btn btn-primary" [appCopier]="meal.strMeal">📑</button>
-          <p class="card-text">{{ meal.strInstructions | tronquer:30 }}</p>
+            <span class="badge bg-secondary">{{ 8 |difficulte }}</span>
+          <h5 class="card-title">{{ meal.title | uppercase }}</h5>
+          <button class="btn btn-primary" [appCopier]="meal.title">📑</button>
+          <p class="card-text">{{ meal.instructions | tronquer:30 }}</p>
         </div>
       </div>
     </div>

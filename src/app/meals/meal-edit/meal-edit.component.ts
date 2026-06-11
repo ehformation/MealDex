@@ -21,7 +21,7 @@ export class MealEditComponent {
   }
   onMealSaved(meal: Meal) : void {
     this.mealsService.editMeal(meal);
-    this.router.navigate(['/meal', meal.idMeal]);
+    this.router.navigate(['/meal', meal.id]);
   }
 
   onMealCanceled() : void {

@@ -1,43 +1,43 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <h2 class="mb-3">{{ isEditMode ? 'Modifier la recette' : 'Ajouter une recette' }}</h2>
   <div  class="mb-3">
-    <label class="form-label" for="strMeal">Nom de la recette:</label>
-    <input class="form-control" id="strMeal" formControlName="strMeal" />
-    <div class="text-danger small" *ngIf="form.get('strMeal')?.touched && form.get('strMeal')?.invalid">
-      <span *ngIf="form.get('strMeal')?.errors?.['required']">Le nom de la recette est requis.</span>
-      <span *ngIf="form.get('strMeal')?.errors?.['minlength']">Le nom doit comporter au moins 3 caractères.</span>
+    <label class="form-label" for="title">Nom de la recette:</label>
+    <input class="form-control" id="title" formControlName="title" />
+    <div class="text-danger small" *ngIf="form.get('title')?.touched && form.get('title')?.invalid">
+      <span *ngIf="form.get('title')?.errors?.['required']">Le nom de la recette est requis.</span>
+      <span *ngIf="form.get('title')?.errors?.['minlength']">Le nom doit comporter au moins 3 caractères.</span>
     </div>
   </div>
   <div class="mb-3">
-    <label class="form-label" for="strMealThumb">Image URL:</label>
-    <input class="form-control" id="strMealThumb" formControlName="strMealThumb" />
+    <label class="form-label" for="thumbnail">Image URL:</label>
+    <input class="form-control" id="thumbnail" formControlName="thumbnail" />
   </div>
   <div class="mb-3">
-    <label class="form-label" for="strInstructions">Instructions:</label>
-    <textarea class="form-control" id="strInstructions" formControlName="strInstructions"></textarea>
-    <div class="text-danger small" *ngIf="form.get('strInstructions')?.touched && form.get('strInstructions')?.invalid">
-      <span *ngIf="form.get('strInstructions')?.errors?.['required']">Les instructions sont requises.</span>
-      <span *ngIf="form.get('strInstructions')?.errors?.['minMots'] as e">Préparation trop courte : {{ e.actuel }} mot(s), il en faut au moins {{ e.requis }}.</span>  
+    <label class="form-label" for="instructions">Instructions:</label>
+    <textarea class="form-control" id="instructions" formControlName="instructions"></textarea>
+    <div class="text-danger small" *ngIf="form.get('instructions')?.touched && form.get('instructions')?.invalid">
+      <span *ngIf="form.get('instructions')?.errors?.['required']">Les instructions sont requises.</span>
+      <span *ngIf="form.get('instructions')?.errors?.['minMots'] as e">Préparation trop courte : {{ e.actuel }} mot(s), il en faut au moins {{ e.requis }}.</span>  
     </div>
   </div>
   <div class="mb-3">
-    <label class="form-label" for="tempsPreparation">Temps de préparation (minutes):</label>
-    <input class="form-control" id="tempsPreparation" formControlName="tempsPreparation" type="number" />
-    <div class="text-danger small" *ngIf="form.get('tempsPreparation')?.touched && form.get('tempsPreparation')?.invalid">
-      <span *ngIf="form.get('tempsPreparation')?.errors?.['required']">Le temps de préparation est requis.</span>
-      <span *ngIf="form.get('tempsPreparation')?.errors?.['tempsInvalide']">Le temps de préparation doit être compris entre 5 et 240 minutes.</span>
+    <label class="form-label" for="preparationTime">Temps de préparation (minutes):</label>
+    <input class="form-control" id="preparationTime" formControlName="preparationTime" type="number" />
+    <div class="text-danger small" *ngIf="form.get('preparationTime')?.touched && form.get('preparationTime')?.invalid">
+      <span *ngIf="form.get('preparationTime')?.errors?.['required']">Le temps de préparation est requis.</span>
+      <span *ngIf="form.get('preparationTime')?.errors?.['tempsInvalide']">Le temps de préparation doit être compris entre 5 et 240 minutes.</span>
     </div>
   </div>
   <div class="mb-3">
     <label class="form-label">Difficulté</label>
-    <select class="form-select" formControlName="strDifficulty">
+    <select class="form-select" formControlName="difficulty">
       <option value="">— choisir —</option>
       <option *ngFor="let d of difficulties">{{ d }}</option>
     </select>
   </div>
   <div class="mb-3">
     <label class="form-label">Catégorie</label>
-    <select class="form-select" formControlName="StrCategory">
+    <select class="form-select" formControlName="category">
       <option value="">— choisir —</option>
       <option *ngFor="let c of categories">{{ c }}</option>
     </select>
