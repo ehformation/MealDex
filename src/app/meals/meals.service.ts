@@ -35,4 +35,8 @@ export class MealsService {
   addMeal(meal: Meal): Observable<Meal> {
     return this.http.post<Meal>(`${this.base}/meals`, meal);
   }
+
+  deleteMeal(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.base}/meals/${id}`);
+  }
 }
