@@ -33,8 +33,8 @@ export class MealFormComponent {
   }
 
   ngOnInit() {
-    this.difficulties = this.mealService.getDifficulty();
-    this.categories = this.mealService.getCategories();
+    this.mealService.getCategories().subscribe(c => this.categories = c);
+    this.mealService.getDifficulty().subscribe(d => this.difficulties = d);
   }
 
   ngOnChanges() {

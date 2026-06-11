@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MealsService } from '../meals.service';
 import { Meal } from 'src/app/core/models/meal.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-meal-list',
@@ -10,13 +11,13 @@ import { Meal } from 'src/app/core/models/meal.model';
 })
 export class MealListComponent {
 
-  meals: Meal[] = [];
+  meals$: Observable<Meal[]> = new Observable<Meal[]>();
   nomRecherche = '';
 
   constructor(private router: Router, private mealsService: MealsService) { }
 
   ngOnInit() {
-    this.meals = this.mealsService.getMeals();
+    this.meals$ = this.mealsService.getMeals();
   }
 
   goToMealDetail(mealId: string) {

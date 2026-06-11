@@ -5,12 +5,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class DifficultePipe implements PipeTransform {
 
-  transform(value: number | null | undefined): string {
-    if (value === null || value === undefined) {
-      return 'N/A';
-    }
-    if(value <= 4) return '🟢 Facile';
-    if(value <= 7) return '🟡 Modérée';
+  transform(value: number | string | null | undefined): string {
+    if (value == null || value === '') return 'Inconnue';
+    const n = Number(value);
+    if (n <= 4) return '🟢 Facile';
+    if (n <= 7) return '🟡 Moyen';
     return '🔴 Difficile';
   }
 

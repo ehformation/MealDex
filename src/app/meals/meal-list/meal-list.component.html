@@ -1,21 +1,27 @@
 <h1>Liste des repas</h1>
 
-<div *ngIf="meals.length > 0">
-  <div class="row">
-    
-    <input [(ngModel)]="nomRecherche" class="form-control mb-4" placeholder="Rechercher un repas...">
-    <p>Vous avez tapé : <strong>{{ nomRecherche }}</strong></p>
-
+<div *ngIf="meals$ | async as meals; else loading">
+  <div *ngIf="meals.length > 0; else noMeals" class="row">
     <div class="col-md-4 mb-4" *ngFor="let meal of meals">
-      <div (click)="goToMealDetail(meal.id)" class="card h-100" appHighlightCard>
-        <img [src]="meal.thumbnail" class="card-img-top" alt="{{ meal.title }}">
+      <div (click)="goToMealDetail(meal.id)" class="card h-100" appHighlightCard style="cursor: pointer;">
+        <img [src]="meal.thumbnail" class="card-img-top" [alt]="meal.title">
         <div class="card-body">
-            <span class="badge bg-secondary">{{ 8 |difficulte }}</span>
+          <span  class="badge bg-secondary">{{ +meal.difficulty! | difficulte }}</span>
           <h5 class="card-title">{{ meal.title | uppercase }}</h5>
-          <button class="btn btn-primary" [appCopier]="meal.title">📑</button>
+          <button class="btn btn-primary" [appCopier]="meal.title" (click)="$event.stopPropagation()">📑</button>
           <p class="card-text">{{ meal.instructions | tronquer:30 }}</p>
         </div>
       </div>
     </div>
   </div>
-  <a routerLink="/meal/add" class="fab" title="Ajouter une recette" aria-label="Ajouter une recette">+</a>
+</div>
+
+<ng-template #loading>
+  <p class="text-center text-muted">Chargement…</p>
+</ng-template>
+
+<ng-template #noMeals>
+  <p class="text-muted">Aucun repas pour le moment.</p>
+</ng-template>
+
+<a routerLink="/meal/add" class="fab" title="Ajouter une recette" aria-label="Ajouter une recette">+</a>

@@ -16,7 +16,9 @@ export class MealEditComponent {
   ngOnInit() {
     const mealId = this.route.snapshot.paramMap.get('id');
     if (mealId) {
-      this.meal = this.mealsService.getMealById(mealId) || null;
+      this.mealsService.getMealById(mealId).subscribe(meal => {
+        this.meal = meal;
+      });
     }
   }
   onMealSaved(meal: Meal) : void {

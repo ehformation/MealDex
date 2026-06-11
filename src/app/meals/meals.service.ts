@@ -1,59 +1,38 @@
 import { Injectable } from '@angular/core';
 import { Meal } from '../core/models/meal.model';
+import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MealsService {
+  private base = 'https://6a2a6fabb687a7d5cbc3b8bd.mockapi.io';
 
-  private meals: Meal[] = [
-    {
-      id: '1',
-      title: 'Spaghetti Carbonara',
-      thumbnail: 'https://www.themealdb.com/images/media/meals/llcbn01574260722.jpg',
-      instructions: '1. Cook spaghetti according to package instructions. 2. In a separate pan, cook pancetta until crispy. 3. In a bowl, whisk together eggs and Parmesan cheese. 4. Drain spaghetti and return to pot. 5. Quickly mix in egg mixture and pancetta. 6. Serve immediately with extra Parmesan.'
-    },
-    {
-      id: '2',
-      title: 'Chicken Alfredo',
-      thumbnail: 'https://www.themealdb.com/images/media/meals/syqypv1486981727.jpg',
-      instructions: '1. Cook fettuccine according to package instructions. 2. In a pan, cook chicken until browned. 3. Remove chicken and set aside. 4. In the same pan, melt butter and add garlic. 5. Stir in heavy cream and Parmesan cheese until sauce thickens. 6. Add chicken back to the pan and toss with cooked fettuccine. 7. Serve hot.'
-    },
-    {
-      id: '3',
-      title: 'Beef Stroganoff',
-      thumbnail: 'https://www.themealdb.com/images/media/meals/svprys1511176755.jpg',
-      instructions: '1. Cook egg noodles according to package instructions. 2. In a pan, cook beef strips until browned. 3. Remove beef and set aside. 4. In the same pan, sauté onions and mushrooms until soft. 5. Stir in sour cream and beef broth until sauce is smooth. 6. Add beef back to the pan and simmer for a few minutes. 7. Serve over cooked egg noodles.'
-    }
-  ];
+  constructor(private http: HttpClient) { }
 
-  constructor() { }
-
-  getMeals(): Meal[] {
-    return this.meals;
+  getMeals(): Observable<Meal[]> {
+    return this.http.get<Meal[]>(`${this.base}/meals`);
   }
 
-  getMealById(id: string): Meal | undefined {
-    return this.meals.find(meal => meal.id === id);
-  } 
-
-  getDifficulty(): string[] {
-    return [
-      '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'
-    ];
+  getMealById(id: string): Observable<Meal> {
+    return this.http.get<Meal>(`${this.base}/meals/${id}`);
   }
 
-  getCategories(): string[] {
-    return [
-      'Entrée', 'Plat', 'Dessert', 'Apéritif', 'Boisson', 'Accompagnement', 'Sauce', 'Autre'
-    ];
+
+  getCategories(): Observable<string[]> {
+    return of(['Entrée', 'Plat', 'Dessert', 'Apéritif', 'Boisson', 'Accompagnement', 'Sauce', 'Autre']);
   }
 
-  editMeal(updatedMeal: Meal): void {
-    this.meals = this.meals.map(meal => meal.id === updatedMeal.id ? updatedMeal : meal);
+  getDifficulty(): Observable<string[]> {
+    return of(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']);
   }
 
-  addMeal(newMeal: Meal): void {
-    this.meals.push(newMeal);
+  editMeal(updatedMeal: Meal): Observable<Meal> {
+    return this.http.put<Meal>(`${this.base}/meals/${updatedMeal.id}`, updatedMeal);
+  }
+
+  addMeal(meal: Meal): Observable<Meal> {
+    return this.http.post<Meal>(`${this.base}/meals`, meal);
   }
 }

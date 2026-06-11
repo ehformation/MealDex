@@ -1,5 +1,5 @@
 
-<div *ngIf="meal as m" class="row">
+<div *ngIf="meal$ | async as m else loading" class="row">
   <div class="col-md-5">
     <img [src]="m.thumbnail" class="img-fluid rounded shadow-sm" [alt]="m.title" />
   </div>
@@ -10,8 +10,14 @@
     <h2>{{ m.title }}</h2>
     <p style="white-space: pre-line;">{{ m.instructions }}</p>
   </div>
+
+  <div *ngIf="!m" class="alert alert-warning">Recette introuvable.</div>
+
 </div>
 
-<div *ngIf="!meal" class="alert alert-warning">Recette introuvable.</div>
+<ng-template #loading>
+  <p class="text-muted">Chargement…</p>
+</ng-template>
+
 
 
