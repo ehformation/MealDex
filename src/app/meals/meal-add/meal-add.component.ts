@@ -12,8 +12,9 @@ export class MealAddComponent {
   constructor(private route: ActivatedRoute, private mealsService: MealsService, private router: Router) {}
 
   onMealSaved(meal : Meal) : void {
-    this.mealsService.addMeal(meal);
-    this.router.navigate(['/']);
+    this.mealsService.addMeal(meal).subscribe(savedMeal => {
+      this.router.navigate(['/meal', savedMeal.id]);
+    });
   }
 
   onMealCanceled() : void  {
